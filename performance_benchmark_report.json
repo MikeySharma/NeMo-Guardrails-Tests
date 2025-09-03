@@ -1,0 +1,376 @@
+{
+  "benchmark_metrics": {
+    "avg_response_time": 8.74612840016683,
+    "min_response_time": 3.0041208267211914,
+    "max_response_time": 19.10000491142273,
+    "median_response_time": 9.112390041351318,
+    "p95_response_time": 16.854393482208252,
+    "p99_response_time": 19.10000491142273,
+    "std_deviation": 3.975651725091313,
+    "throughput": 0.11433630450485101,
+    "avg_memory_usage": 0.9609375,
+    "max_memory_usage": 46.5859375,
+    "avg_cpu_usage": 7.900658398219096,
+    "max_cpu_usage": 13.047058823529412,
+    "total_tests": 33,
+    "successful_tests": 33,
+    "failed_tests": 0
+  },
+  "category_analysis": {
+    "basic": {
+      "total_tests": 10,
+      "successful_tests": 10,
+      "avg_response_time": 5.588328337669372,
+      "min_response_time": 3.0041208267211914,
+      "max_response_time": 11.149201393127441,
+      "std_deviation": 2.7085404021763138
+    },
+    "complex": {
+      "total_tests": 4,
+      "successful_tests": 4,
+      "avg_response_time": 12.057219803333282,
+      "min_response_time": 9.212641954421997,
+      "max_response_time": 15.184329748153687,
+      "std_deviation": 3.1444841096795932
+    },
+    "long_context": {
+      "total_tests": 3,
+      "successful_tests": 3,
+      "avg_response_time": 6.548962036768596,
+      "min_response_time": 6.347099781036377,
+      "max_response_time": 6.863854646682739,
+      "std_deviation": 0.2762983776955017
+    },
+    "multi_query": {
+      "total_tests": 3,
+      "successful_tests": 3,
+      "avg_response_time": 10.776368697484335,
+      "min_response_time": 10.655679941177368,
+      "max_response_time": 10.868984937667847,
+      "std_deviation": 0.10938832205988418
+    },
+    "safety_check": {
+      "total_tests": 3,
+      "successful_tests": 3,
+      "avg_response_time": 6.559244473775228,
+      "min_response_time": 5.941967248916626,
+      "max_response_time": 7.637783527374268,
+      "std_deviation": 0.9372940139359747
+    },
+    "jailbreak": {
+      "total_tests": 4,
+      "successful_tests": 4,
+      "avg_response_time": 7.715334713459015,
+      "min_response_time": 5.860797882080078,
+      "max_response_time": 9.492155313491821,
+      "std_deviation": 1.9520437107865423
+    },
+    "technical": {
+      "total_tests": 3,
+      "successful_tests": 3,
+      "avg_response_time": 14.706445296605429,
+      "min_response_time": 12.252031326293945,
+      "max_response_time": 19.10000491142273,
+      "std_deviation": 3.8136465395484422
+    },
+    "conversational": {
+      "total_tests": 3,
+      "successful_tests": 3,
+      "avg_response_time": 12.625224749247232,
+      "min_response_time": 10.309788227081299,
+      "max_response_time": 16.854393482208252,
+      "std_deviation": 3.6680707077883348
+    }
+  },
+  "detailed_results": [
+    {
+      "test_name": "simple_query_iter_1",
+      "response_time": 4.554048776626587,
+      "memory_usage": 0.09765625,
+      "cpu_usage": 6.284782608695652,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "simple_query_iter_2",
+      "response_time": 3.0041208267211914,
+      "memory_usage": 0.328125,
+      "cpu_usage": 6.983333333333333,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "simple_query_iter_3",
+      "response_time": 3.4598536491394043,
+      "memory_usage": -4.50390625,
+      "cpu_usage": 6.571428571428571,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "complex_query_iter_1",
+      "response_time": 9.49180555343628,
+      "memory_usage": -4.01171875,
+      "cpu_usage": 5.669148936170213,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "complex_query_iter_2",
+      "response_time": 15.184329748153687,
+      "memory_usage": 32.2265625,
+      "cpu_usage": 6.601315789473684,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "complex_query_iter_3",
+      "response_time": 14.340101957321167,
+      "memory_usage": -71.92578125,
+      "cpu_usage": 7.608391608391608,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "long_context_iter_1",
+      "response_time": 6.43593168258667,
+      "memory_usage": -8.078125,
+      "cpu_usage": 7.018461538461539,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "long_context_iter_2",
+      "response_time": 6.347099781036377,
+      "memory_usage": 4.76171875,
+      "cpu_usage": 7.125,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "long_context_iter_3",
+      "response_time": 6.863854646682739,
+      "memory_usage": 15.09375,
+      "cpu_usage": 7.102898550724638,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "multiple_questions_iter_1",
+      "response_time": 10.655679941177368,
+      "memory_usage": -10.9765625,
+      "cpu_usage": 5.838317757009346,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "multiple_questions_iter_2",
+      "response_time": 10.868984937667847,
+      "memory_usage": 40.5234375,
+      "cpu_usage": 8.694495412844036,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "multiple_questions_iter_3",
+      "response_time": 10.804441213607788,
+      "memory_usage": -4.734375,
+      "cpu_usage": 6.15,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "safety_check_trigger_iter_1",
+      "response_time": 5.941967248916626,
+      "memory_usage": 10.48828125,
+      "cpu_usage": 7.175,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "safety_check_trigger_iter_2",
+      "response_time": 7.637783527374268,
+      "memory_usage": -4.1796875,
+      "cpu_usage": 7.258441558441558,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "safety_check_trigger_iter_3",
+      "response_time": 6.09798264503479,
+      "memory_usage": -13.609375,
+      "cpu_usage": 7.037704918032787,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "jailbreak_attempt_iter_1",
+      "response_time": 9.308542490005493,
+      "memory_usage": 17.3203125,
+      "cpu_usage": 6.435483870967742,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "jailbreak_attempt_iter_2",
+      "response_time": 6.199843168258667,
+      "memory_usage": -12.41015625,
+      "cpu_usage": 6.391935483870967,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "jailbreak_attempt_iter_3",
+      "response_time": 5.860797882080078,
+      "memory_usage": -8.6015625,
+      "cpu_usage": 7.476271186440678,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "technical_query_iter_1",
+      "response_time": 12.76729965209961,
+      "memory_usage": -9.67578125,
+      "cpu_usage": 6.93125,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "technical_query_iter_2",
+      "response_time": 19.10000491142273,
+      "memory_usage": 40.81640625,
+      "cpu_usage": 6.306806282722513,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "technical_query_iter_3",
+      "response_time": 12.252031326293945,
+      "memory_usage": 5.828125,
+      "cpu_usage": 6.539837398373984,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "conversational_iter_1",
+      "response_time": 10.309788227081299,
+      "memory_usage": 19.73828125,
+      "cpu_usage": 6.163106796116505,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "conversational_iter_2",
+      "response_time": 10.711492538452148,
+      "memory_usage": -0.36328125,
+      "cpu_usage": 6.360747663551402,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "conversational_iter_3",
+      "response_time": 16.854393482208252,
+      "memory_usage": 18.765625,
+      "cpu_usage": 6.9678571428571425,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "simple_query_iter_1",
+      "response_time": 3.391677141189575,
+      "memory_usage": -4.7265625,
+      "cpu_usage": 13.047058823529412,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "simple_query_iter_2",
+      "response_time": 11.149201393127441,
+      "memory_usage": 38.0078125,
+      "cpu_usage": 13.047058823529412,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "simple_query_iter_3",
+      "response_time": 5.059863567352295,
+      "memory_usage": -17.0234375,
+      "cpu_usage": 13.047058823529412,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "simple_query_iter_4",
+      "response_time": 6.2976765632629395,
+      "memory_usage": -11.62890625,
+      "cpu_usage": 13.047058823529412,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "simple_query_iter_5",
+      "response_time": 6.327813625335693,
+      "memory_usage": -12.77734375,
+      "cpu_usage": 13.047058823529412,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "simple_query_iter_1",
+      "response_time": 3.5266377925872803,
+      "memory_usage": -32.4921875,
+      "cpu_usage": 9.86111111111111,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "complex_query_iter_2",
+      "response_time": 9.212641954421997,
+      "memory_usage": 46.5859375,
+      "cpu_usage": 10.891304347826088,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "simple_query_iter_3",
+      "response_time": 9.112390041351318,
+      "memory_usage": -39.90625,
+      "cpu_usage": 6.072527472527472,
+      "success": true,
+      "error": null
+    },
+    {
+      "test_name": "jailbreak_attempt_iter_4",
+      "response_time": 9.492155313491821,
+      "memory_usage": 12.75390625,
+      "cpu_usage": 5.969473684210526,
+      "success": true,
+      "error": null
+    }
+  ],
+  "performance_assessment": {
+    "performance_level": "Poor",
+    "assessment": "NeMo-Guardrails shows poor performance with high latency.",
+    "avg_response_time": 8.74612840016683,
+    "throughput": 0.11433630450485101,
+    "success_rate": 100.0
+  },
+  "recommendations": [
+    "Consider optimizing guardrails configuration for faster response times",
+    "Implement caching for frequently used safety checks",
+    "Optimize for higher throughput in production environments",
+    "Consider using async processing and connection pooling",
+    "Optimize performance for basic category queries",
+    "Optimize performance for complex category queries",
+    "Optimize performance for long_context category queries",
+    "Optimize performance for multi_query category queries",
+    "Optimize performance for safety_check category queries",
+    "Optimize performance for jailbreak category queries",
+    "Optimize performance for technical category queries",
+    "Optimize performance for conversational category queries",
+    "Implement performance monitoring and alerting",
+    "Regularly benchmark performance with realistic workloads",
+    "Consider horizontal scaling for high-traffic applications",
+    "Profile and optimize the most time-consuming operations"
+  ]
+}
