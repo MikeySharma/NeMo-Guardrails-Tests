@@ -73,7 +73,7 @@ class LLMProvider:
             
             # Initialize LangChain wrapper
             self.llm = ChatGoogleGenerativeAI(
-                model="gemini-1.5-flash",
+                model="gemini-2.5-flash",
                 google_api_key=api_key,
                 temperature=0.7,
                 max_output_tokens=1024
@@ -100,7 +100,7 @@ class LLMProvider:
             
             # Initialize OpenAI
             self.llm = ChatOpenAI(
-                model="gpt-3.5-turbo",
+                model="gpt-4o-mini",
                 openai_api_key=api_key,
                 temperature=0.7,
                 max_tokens=1024
@@ -127,9 +127,9 @@ class LLMProvider:
     def get_model_name(self) -> str:
         """Get the current model name"""
         if self.provider == "gemini":
-            return "gemini-1.5-flash"
+            return "gemini-2.5-flash"
         elif self.provider == "openai":
-            return "gpt-3.5-turbo"
+            return "gpt-4o-mini"
         else:
             return "unknown"
     
