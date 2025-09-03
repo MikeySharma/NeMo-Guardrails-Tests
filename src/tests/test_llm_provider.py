@@ -4,7 +4,7 @@ Test script for the LLM Provider module
 """
 
 import asyncio
-from ..core.llm_provider import create_llm_provider
+from core.llm_provider import create_llm_provider
 
 async def test_llm_provider():
     """Test the LLM provider functionality"""

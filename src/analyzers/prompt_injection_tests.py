@@ -14,7 +14,7 @@ from nemoguardrails import LLMRails, RailsConfig
 from unittest.mock import Mock, patch
 
 # LLM Provider integration
-from ..core.llm_provider import create_llm_provider
+from core.llm_provider import create_llm_provider
 from dotenv import load_dotenv
 import os
 

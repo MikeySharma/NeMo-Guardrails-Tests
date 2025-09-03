@@ -38,9 +38,13 @@ NeMo-Guardrails-Test/
 │   └── ... (other generated reports)
 ├── examples/                     # Example configurations
 │   └── simple_test.py
-├── run_focused_injection_test.py # Entry point for focused injection testing
-├── run_comprehensive_analysis.py # Entry point for comprehensive analysis
-├── test_llm_provider.py         # Entry point for LLM provider testing
+├── src/                          # Source code and entry points
+│   ├── run_focused_injection_test.py # Entry point for focused injection testing
+│   ├── run_comprehensive_analysis.py # Entry point for comprehensive analysis
+│   ├── run_basic_analysis.py        # Entry point for basic analysis
+│   ├── run_security_analysis.py     # Entry point for security analysis
+│   ├── run_performance_analysis.py  # Entry point for performance analysis
+│   └── test_llm_provider.py         # Entry point for LLM provider testing
 ├── requirements.txt             # Python dependencies
 ├── .gitignore                   # Git ignore file
 └── README.md                    # This file
@@ -82,6 +86,12 @@ OPENAI_API_KEY=your_openai_api_key_here
 
 ## 🧪 Running Tests
 
+All test scripts are located in the `src/` directory. Navigate to the src directory first:
+
+```bash
+cd src
+```
+
 ### Quick Start - Test LLM Provider
 
 ```bash
@@ -89,6 +99,23 @@ python test_llm_provider.py
 ```
 
 This will test your API key setup and LLM provider functionality.
+
+### Individual Analysis Modules
+
+**Basic Analysis:**
+```bash
+python run_basic_analysis.py
+```
+
+**Security Analysis:**
+```bash
+python run_security_analysis.py
+```
+
+**Performance Analysis:**
+```bash
+python run_performance_analysis.py
+```
 
 ### Focused Prompt Injection Testing
 

@@ -13,7 +13,7 @@ import time
 from typing import List, Dict, Any
 from dataclasses import dataclass, asdict
 from nemoguardrails import LLMRails, RailsConfig
-from ..core.llm_provider import create_llm_provider
+from core.llm_provider import create_llm_provider
 from dotenv import load_dotenv
 import os
 
