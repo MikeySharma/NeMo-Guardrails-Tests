@@ -9,8 +9,26 @@ GEMINI_API_KEY=your_gemini_api_key_here
 # Get your API key from: https://platform.openai.com/api-keys
 OPENAI_API_KEY=your_openai_api_key_here
 
-# Optional: Hugging Face API Key (if you want to test with HF models)
+# Optional: Hugging Face API Key (required for Llama Prompt Guard)
 # HUGGINGFACE_API_KEY=your_hf_api_key_here
+# or
+# HF_TOKEN=your_hf_token_here
+
+# Guardrails Framework Configuration (SIMPLE!)
+# Just set this ONE variable to switch between frameworks:
+# Options: nemo, llm, llama, all
+ACTIVE_GUARDRAILS=nemo
+
+# Examples:
+# ACTIVE_GUARDRAILS=nemo        # Use NeMo-Guardrails (default)
+# ACTIVE_GUARDRAILS=llm         # Use LLM Guard
+# ACTIVE_GUARDRAILS=llama       # Use Llama Prompt Guard
+# ACTIVE_GUARDRAILS=all         # Use all frameworks for comparison
+
+# Test Configuration
+RATE_LIMITED=true
+REQUESTS_PER_MINUTE=15
+DELAY_BETWEEN_REQUESTS=4.0
 
 # Note: The system will automatically detect which API key is available
 # and use the appropriate provider. You only need to set one of them.

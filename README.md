@@ -5,7 +5,9 @@ A comprehensive testing framework for evaluating NeMo-Guardrails with support fo
 ## 🚀 Features
 
 - **Multi-Provider Support**: Automatically detects and uses Gemini (free) or OpenAI API keys
+- **Multi-Framework Guardrails**: Support for NeMo-Guardrails, [LLM Guard](https://github.com/protectai/llm-guard), and [Llama Prompt Guard](https://huggingface.co/meta-llama/Llama-Prompt-Guard-2-22M)
 - **Comprehensive Security Testing**: 60+ prompt injection techniques including DAN variants, system bypasses, and sophisticated attacks
+- **Framework Comparison**: Compare security effectiveness across different guardrails frameworks
 - **Performance Benchmarking**: Detailed performance analysis with rate limiting for free tier usage
 - **Automated Reporting**: Generates detailed JSON reports with security assessments and recommendations
 - **Rate Limiting**: Built-in rate limiting to work within free tier API quotas
@@ -70,14 +72,23 @@ Copy the environment template and set your API key:
 cp docs/env_template.txt .env
 ```
 
-Edit `.env` and set at least one API key:
+Edit `.env` and configure your setup:
 
 ```bash
-# For Gemini (Free tier - Recommended)
+# API Keys (at least one required)
 GEMINI_API_KEY=your_gemini_api_key_here
-
-# For OpenAI (Paid tier)
 OPENAI_API_KEY=your_openai_api_key_here
+
+# Guardrails Framework Configuration
+GUARDRAILS_FRAMEWORK=nemoguardrails  # Options: nemoguardrails, llm-guard, llama-prompt-guard, all
+
+# LLM Guard Configuration
+LLM_GUARD_ENABLED=false
+LLM_GUARD_SCANNERS=PromptInjection,Toxicity,Secrets,Regex
+
+# Llama Prompt Guard Configuration
+LLAMA_PROMPT_GUARD_ENABLED=false
+LLAMA_PROMPT_GUARD_MODEL=meta-llama/Llama-Prompt-Guard-2-22M
 ```
 
 **Get API Keys:**
@@ -99,6 +110,14 @@ python test_llm_provider.py
 ```
 
 This will test your API key setup and LLM provider functionality.
+
+### Multi-Framework Testing
+
+```bash
+python test_multi_guardrails.py
+```
+
+This will test all available guardrails frameworks with sample prompts.
 
 ### Individual Analysis Modules
 
@@ -175,6 +194,28 @@ The test suite generates several JSON reports in the `reports/` folder:
 All reports are automatically saved to the `reports/` directory for easy access and analysis.
 
 ## ⚙️ Configuration
+
+### Guardrails Framework Selection
+
+Configure which guardrails frameworks to use in your `.env` file:
+
+```bash
+# Use only NeMo-Guardrails (default)
+GUARDRAILS_FRAMEWORK=nemoguardrails
+
+# Use only LLM Guard
+GUARDRAILS_FRAMEWORK=llm-guard
+LLM_GUARD_ENABLED=true
+
+# Use only Llama Prompt Guard
+GUARDRAILS_FRAMEWORK=llama-prompt-guard
+LLAMA_PROMPT_GUARD_ENABLED=true
+
+# Use all available frameworks
+GUARDRAILS_FRAMEWORK=all
+LLM_GUARD_ENABLED=true
+LLAMA_PROMPT_GUARD_ENABLED=true
+```
 
 ### Rate Limiting (Free Tier)
 
