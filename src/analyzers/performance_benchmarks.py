@@ -18,8 +18,8 @@ import threading
 from nemoguardrails import LLMRails, RailsConfig
 from unittest.mock import Mock, patch
 
-# Gemini integration
-from gemini_integration import GeminiLLM
+# LLM Provider integration
+from ..core.llm_provider import create_llm_provider
 from dotenv import load_dotenv
 import os
 
@@ -64,19 +64,24 @@ class PerformanceBenchmarker:
     
     def __init__(self):
         self.results: List[PerformanceResult] = []
-        self.gemini_llm = None
+        self.llm_provider = None
         self.setup_llm()
         self.monitoring = False
         self.monitoring_data = []
     
     def setup_llm(self):
-        """Setup LLM - try Gemini first, fallback to mock"""
+        """Setup LLM - auto-detect provider, fallback to mock"""
         try:
-            # Try to setup Gemini
-            self.gemini_llm = GeminiLLM()
-            print("✅ Using Google Gemini for performance testing")
+            # Try to setup LLM provider (auto-detects Gemini or OpenAI)
+            self.llm_provider = create_llm_provider(
+                provider="auto",
+                rate_limited=True,
+                requests_per_minute=15,
+                delay_between_requests=4.0
+            )
+            print(f"✅ Using {self.llm_provider.get_provider_name()} ({self.llm_provider.get_model_name()}) for performance testing")
         except Exception as e:
-            print(f"⚠️ Gemini setup failed: {e}")
+            print(f"⚠️ LLM setup failed: {e}")
             print("🔄 Falling back to mock LLM for testing")
             self.setup_mock_llm()
     
@@ -210,9 +215,9 @@ define bot express greeting
             config = self.create_performance_config()
             
             # Create LLMRails instance with appropriate LLM
-            if self.gemini_llm:
-                # Use real Gemini LLM
-                app = LLMRails(config=config, llm=self.gemini_llm.get_langchain_model(), verbose=False)
+            if self.llm_provider:
+                # Use real LLM provider
+                app = LLMRails(config=config, llm=self.llm_provider.get_llm(), verbose=False)
             else:
                 # Use mock LLM
                 with patch('nemoguardrails.rails.llm.llmrails.LLMRails._get_llm', return_value=self.mock_llm):

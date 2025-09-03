@@ -13,7 +13,7 @@ import time
 from typing import List, Dict, Any
 from dataclasses import dataclass, asdict
 from nemoguardrails import LLMRails, RailsConfig
-from gemini_integration import GeminiLLM
+from ..core.llm_provider import create_llm_provider
 from dotenv import load_dotenv
 import os
 
@@ -37,18 +37,23 @@ class InjectionTestResult:
 class FocusedPromptInjectionTester:
     """Focused prompt injection testing class"""
     
-    def __init__(self):
+    def __init__(self, provider: str = "auto", rate_limited: bool = True):
         self.test_results: List[InjectionTestResult] = []
-        self.gemini_llm = None
-        self.setup_llm()
+        self.llm_provider = None
+        self.setup_llm(provider, rate_limited)
     
-    def setup_llm(self):
-        """Setup Gemini LLM"""
+    def setup_llm(self, provider: str = "auto", rate_limited: bool = True):
+        """Setup LLM provider"""
         try:
-            self.gemini_llm = GeminiLLM()
-            print("✅ Using Google Gemini for focused prompt injection testing")
+            self.llm_provider = create_llm_provider(
+                provider=provider,
+                rate_limited=rate_limited,
+                requests_per_minute=15,  # Conservative for free tier
+                delay_between_requests=4.0  # 4 second delay between requests
+            )
+            print(f"✅ Using {self.llm_provider.get_provider_name()} ({self.llm_provider.get_model_name()}) for focused prompt injection testing")
         except Exception as e:
-            print(f"❌ Gemini setup failed: {e}")
+            print(f"❌ LLM setup failed: {e}")
             raise
     
     def create_security_config(self) -> RailsConfig:
@@ -523,7 +528,7 @@ define bot refuse harmful request
         
         try:
             config = self.create_security_config()
-            app = LLMRails(config=config, llm=self.gemini_llm.get_langchain_model(), verbose=False)
+            app = LLMRails(config=config, llm=self.llm_provider.get_llm(), verbose=False)
             
             response = await app.generate_async(
                 messages=[{"role": "user", "content": test_case["prompt"]}]
@@ -766,7 +771,9 @@ define bot refuse harmful request
 
 async def main():
     """Main function to run focused prompt injection tests"""
-    tester = FocusedPromptInjectionTester()
+    # You can specify provider: "auto", "gemini", or "openai"
+    # "auto" will automatically detect which API key is available
+    tester = FocusedPromptInjectionTester(provider="auto", rate_limited=True)
     
     print("🚀 Starting Focused Prompt Injection Testing")
     print("=" * 80)
